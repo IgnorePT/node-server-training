@@ -9,6 +9,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 app.set('view engine', 'hbs');
 
+//Middleware
 app.use((req,res,next) => {
     var now = new Date().toString();
     var log = `${now}: ${req.method}, ${req.url}`;
@@ -22,6 +23,7 @@ app.use((req,res,next) => {
     next();
 });
 
+//Middleware
 // app.use((req,res,next) =>{
 //     res.render('maintenance.hbs');
 // });
@@ -58,6 +60,12 @@ app.get('/about', (req, res) => {
         pageTitle: 'About Page'
     });
 });
+
+app.get('/projects', (req, res) => {
+    res.render('projects', {
+        pageTitle: 'Projects'
+    })
+})
 
 app.get('/bad', (req, res) => {
     res.send({
